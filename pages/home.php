@@ -1,10 +1,6 @@
 <?php
 
-use App\Entity\Categorie;
-use App\Entity\Post;
-
-$posts = Post::getPosts();
-$categories = Categorie::getAll();
+$posts = App::getInstance()->getTable('Post')->getPosts();
 
 ?>
 
@@ -42,8 +38,8 @@ $categories = Categorie::getAll();
         <div class="container-fluid">
             <div class="row row-cols-5">
 
-                <?php /*foreach (User::getUsers() as $user):*/?>
-                <!-- User template -->
+                <?php /*foreach (UserEntity::getUsers() as $user):*/?>
+                <!-- UserEntity template -->
                 <div class="card">
                     <img src="<?/*= $user->avatar */?>" class="card-img-top" alt="Profil">
                     <div class="card-body">
@@ -54,7 +50,7 @@ $categories = Categorie::getAll();
                         <p class="card-text"><strong>Phone number :</strong><br/><?/*= $user->phone */?></p>
                         <a href="mailto:<?/*= $user->email */?>">Contact by mail</a>
                         <br/><br/>
-                        <a href="/pages/edit_user.php?id=<?/*= $user->id */?>" class="btn btn-primary">Edit</a> <a href="index.php?p=delete_user&id=<?/*= $user->id */?>" class="btn btn-danger">Delete</a>
+                        <a href="/pages/users/edit_user.php?id=<?/*= $user->id */?>" class="btn btn-primary">Edit</a> <a href="index.php?p=delete_user&id=<?/*= $user->id */?>" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
                 <!-- / -->
@@ -63,16 +59,6 @@ $categories = Categorie::getAll();
             </div>
         </div>
     </div>
-    <div class="col-sm-2">
-        <div class="container-fluid p-5">
-            <ul>
-                <?php foreach ($categories as $categorie): ?>
-                    <li>
-                        <a href="<?= $categorie->url ?>"><?= $categorie->name ?></a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    </div>
+    <?php include ROOT . "/parts/categories/categories_sidebar.php" ?>
 </div>
 

@@ -3,17 +3,14 @@
 namespace App\Entity;
 
 
-use App\App;
-use App\Table;
-use \PDO;
+use Core\Entity\Entity;
 
-class Post extends Table {
 
-    protected static $table="posts";
+class PostEntity extends Entity {
 
     public function getUrl()
     {
-        return "index.php?p=post&id=" . $this->id;
+        return "index.php?p=post.single&id=" . $this->id;
     }
 
     public function getUrlDelete()
@@ -21,35 +18,7 @@ class Post extends Table {
         return "index.php?p=delete_post&id=" . $this->id;
     }
 
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    public static function getPosts(): array
-    {
-        return self::query("
-            SELECT p.id, p.title, p.date, p.content, u.lastname, u.firstname, u.id AS u_id, c.name AS categorie FROM posts AS p 
-                LEFT JOIN users AS u ON p.author_id = u.id 
-                LEFT JOIN categories AS c ON p.category_id = c.id
-            ORDER BY p.date DESC"
-        );
-    }
+/*
 
     public static function findByCategorie($categorie_id)
     {
@@ -60,19 +29,6 @@ class Post extends Table {
             WHERE p.category_id = :category_id
            ",
             [':category_id'=>$categorie_id]
-        );
-    }
-
-    public static function find($id)
-    {
-        return self::query("
-            SELECT p.id, p.title, p.date, p.content, u.lastname, u.firstname, u.id AS u_id, c.name FROM posts AS p 
-                LEFT JOIN categories AS c ON p.category_id = c.id 
-                LEFT JOIN users AS u ON p.author_id = u.id 
-            WHERE p.id = :post_id
-            ",
-            [':post_id'=>$id],
-            true
         );
     }
 

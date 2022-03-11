@@ -2,26 +2,19 @@
 
 namespace App\Entity;
 
-use App\Table;
-use \PDO;
+use Core\Entity\Entity;
 
-class User extends Table {
-
-    protected static $table = "users";
+class UserEntity extends Entity {
 
     public function getUrl()
     {
-        return "index.php?p=user&id=" . $this->id;
+        return "index.php?p=user.single&id=" . $this->id;
     }
 
-    public function getUrlDelete()
-    {
-        return "index.php?p=delete_user&id=" . $this->id;
-    }
 
 /*    static function getUsers() :array
     {
-        $query_users = (new User)->initialize()->query("SELECT * FROM users");
+        $query_users = (new UserEntity)->initialize()->query("SELECT * FROM users");
         $allUsers = $query_users->fetchAll(PDO::FETCH_OBJ);
         return $allUsers;
     }

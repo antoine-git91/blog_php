@@ -2,7 +2,7 @@
 
 use App\User;
 
-include_once ("../public/index.php");
+include_once("../public/index.php");
 
 $new_user = new User;
 $new_user->addUser();

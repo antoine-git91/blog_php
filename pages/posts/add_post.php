@@ -1,6 +1,6 @@
 <?php
 
-
+App::getInstance()->title =
 
 ?>
 
