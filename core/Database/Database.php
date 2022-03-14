@@ -33,6 +33,14 @@ class Database{
     {
         $req = $this->getPdo()->query($statement);
 
+        if(
+            str_starts_with($statement, "INSERT") ||
+            str_starts_with($statement, "UPDATE") ||
+            str_starts_with($statement, "DELETE")
+        ){
+            return $req;
+        }
+
         if($class_name === null){
             $req->setFetchMode(PDO::FETCH_OBJ);
         } else {
@@ -47,18 +55,35 @@ class Database{
         return $data;
     }
 
-    public function prepare($statement, $attributes, $class_name, $one=false)
+    public function prepare($statement, $attributes, $class_name = null, $one=false)
     {
-        $query_post = $this->getPdo()->prepare($statement);
-        $query_post->execute($attributes);
-        $query_post->setFetchMode(PDO::FETCH_CLASS, $class_name);
-        if($one){
-            $data = $query_post->fetch();
+        $req = $this->getPdo()->prepare($statement);
+        $res = $req->execute($attributes);
+        if(
+            strpos($statement, "INSERT") === 0 ||
+            strpos($statement, "UPDATE") === 0 ||
+            strpos($statement, "DELETE") === 0
+        ){
+            return $res;
+        }
+
+        if($class_name === null){
+            $req->setFetchMode(PDO::FETCH_OBJ);
         } else {
-            $data = $query_post->fetchAll();
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        }
+        if($one){
+            $data = $req->fetch();
+        } else {
+            $data = $req->fetchAll();
         }
 
         return $data;
     }
-//"SELECT p.id, p.title, p.date, p.content, u.lastname, u.firstname, u.id AS u_id FROM posts AS p LEFT JOIN users AS u ON p.author_id = u.id WHERE p.id = :post_id"
+
+    public function lastInsertId()
+    {
+        return $this->getPdo()->lastInsertId();
+    }
+
 }

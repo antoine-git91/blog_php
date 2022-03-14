@@ -18,6 +18,12 @@ class PostEntity extends Entity {
         return "index.php?p=delete_post&id=" . $this->id;
     }
 
+    public function getExcerpt()
+    {
+        $excerpt = substr($this->content, 0, 200) . "...";
+        return $excerpt;
+    }
+
 /*
 
     public static function findByCategorie($categorie_id)

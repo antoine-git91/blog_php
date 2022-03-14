@@ -53,6 +53,10 @@ class App
         header("Location: index.php?p=404");
     }
 
+    public function forbidden(){
+        header('HTTP/1.0 403 Forbidden');
+    }
+
 /*    private static $title = "Mon Premier blog";
 
     private static $databse;

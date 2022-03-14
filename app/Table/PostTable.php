@@ -29,7 +29,7 @@ class PostTable extends Table
     public function find($id): \App\Entity\PostEntity
     {
         return $this->query("
-                SELECT p.id, p.title, p.date, p.content, u.lastname, u.firstname, u.id AS u_id, c.name FROM posts AS p 
+                SELECT p.id, p.title, p.date, p.content, u.lastname, u.firstname, u.id AS u_id, c.name, c.id AS c_id FROM posts AS p 
                     LEFT JOIN categories AS c ON p.category_id = c.id 
                     LEFT JOIN users AS u ON p.author_id = u.id 
                 WHERE p.id = :post_id
@@ -54,6 +54,24 @@ class PostTable extends Table
                 WHERE c.id = :category_id
                 ",
             [':category_id'=>$id]
+        );
+    }
+
+    /**
+     * Récupère les posts avec l'auteur demandé
+     * @return array
+     * @param $id
+     */
+    public function findByUser($id): array
+    {
+        return $this->query(
+            "
+                SELECT p.id, p.title, p.content, p.date, c.name, u.id AS user_id, u.firstname, u.lastname from posts AS p
+                    LEFT JOIN categories AS c ON p.category_id = c.id
+                    LEFT JOIN users AS u ON p.author_id = u.id
+                WHERE u.id = :user_id
+                ",
+            [':user_id'=>$id]
         );
     }
 }

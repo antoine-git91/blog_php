@@ -26,9 +26,9 @@ if($category === false){
                                 <small>Written by <strong><?= $post->firstname . " " . $post->lastname ?></strong> the <em><?= $post->date ?></em></small>
                             </div>
                             <div class='card-body'><?= $post->content ?></div>
-                            <div class='card-footer text-right'>
-                                <a href="<?= $post->url; ?>" class="btn btn-danger">Delete</a>
-                            </div>
+                            <!--<div class='card-footer text-right'>
+                                <a href="<?/*= $post->url; */?>" class="btn btn-danger">Delete</a>
+                            </div>-->
                         </article>
                     </a>
                 <div class='w-100'>&nbsp;</div>

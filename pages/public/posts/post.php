@@ -20,4 +20,5 @@ $app->title = $post->title;
         <hr/>
         <p><?= $post->content ?></p>
     </div>
+    <?php include ROOT . '/parts/categories/categories_sidebar.php' ?>
 </div>

@@ -12,13 +12,33 @@ if(isset($_GET['p'])){
 }
 
 ob_start();
+// Home
 if($p === 'home'){
-    require ROOT . '/pages/home.php';
-} elseif ($p === "post.single"){
-    require ROOT . '/pages/posts/post.php';
+    require ROOT . '/pages/public/home.php';
+}
+// posts
+elseif ($p === "post.single"){
+    require ROOT . '/pages/public/posts/post.php';
 } elseif ($p === "posts.category"){
-    require ROOT . '/pages/categories/categorie.php';
-} elseif ($p === "404"){
+    require ROOT . '/pages/public/posts/categorie.php';
+}
+// Categories
+elseif ($p === "categories"){
+    require ROOT . '/pages/public/categories/index.php';
+}
+// Authors
+elseif ($p === "authors"){
+    require ROOT . '/pages/public/authors/index.php';
+}
+elseif ($p === "user.single"){
+    require ROOT . '/pages/public/authors/single.php';
+}
+// login
+elseif ($p === "login"){
+    require ROOT . '/pages/admin/login.php';
+}
+//404
+elseif ($p === "404"){
     require ROOT . '/pages/404.php';
 }
 $content = ob_get_clean();
