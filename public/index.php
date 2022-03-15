@@ -1,9 +1,5 @@
 <?php
 
-use App\Controller\CategoriesController;
-use App\Controller\PostController;
-use App\Controller\UsersController;
-
 define('ROOT', dirname(__DIR__));
 require ROOT . '/app/App.php';
 App::load();
