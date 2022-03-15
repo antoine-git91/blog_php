@@ -26,7 +26,7 @@ class PostTable extends Table
      * @return \App\Entity\PostEntity
      * @param $id
      */
-    public function find($id): \App\Entity\PostEntity
+    public function find($id)
     {
         return $this->query("
                 SELECT p.id, p.title, p.date, p.content, u.lastname, u.firstname, u.id AS u_id, c.name, c.id AS c_id FROM posts AS p 

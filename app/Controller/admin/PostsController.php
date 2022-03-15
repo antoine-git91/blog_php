@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use \App;
 
-class PostController extends AppController
+class PostsController extends AppController
 {
 
     public function __construct()

@@ -5,12 +5,17 @@ namespace App\Controller;
 use \App;
 use Core\Controller\Controller;
 
-class CategoryController extends AppController
+class CategoriesController extends AppController
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->loadModel('Category');
+    }
+
     public function index(){
-        $app = App::getInstance();
-        $categories = $app->getTable('Category')->all();
+        $categories = $this->Category->all();
         $data = compact('categories');
         $this->render('/public/categories/index', $data);
     }

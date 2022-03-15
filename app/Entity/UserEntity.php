@@ -8,7 +8,7 @@ class UserEntity extends Entity {
 
     public function getUrl()
     {
-        return "index.php?p=user.single&id=" . $this->id;
+        return "index.php?p=users.single&id=" . $this->id;
     }
 
 

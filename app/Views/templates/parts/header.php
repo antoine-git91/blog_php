@@ -7,10 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
-                    <a class="nav-link" href="index.php?p=authors">Nos Auteurs</a>
+                    <a class="nav-link" href="index.php?p=users.index">Nos Auteurs</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="index.php?p=categories">Nos Catégories</a>
+                    <a class="nav-link" href="index.php?p=categories.index">Nos Catégories</a>
                 </li>
                 <li class="nav-item">
                     <p class="nav-link"> | </p>
@@ -21,7 +21,7 @@
                             Posts
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <a class="dropdown-item" href="index.php?p=admin.posts">Tous les posts</a>
+                            <a class="dropdown-item" href="index.php?p=admin.posts.index">Tous les posts</a>
                             <a class="dropdown-item" href="index.php?p=admin.posts.create">Ajouter un post</a>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                             Users
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <a class="dropdown-item" href="index.php?p=admin.users">Liste des users</a>
+                            <a class="dropdown-item" href="index.php?p=admin.users.index">Liste des users</a>
                             <a class="dropdown-item" href="index.php?p=admin.users.create">Ajout user</a>
                         </div>
                     </div>
@@ -43,12 +43,12 @@
                             Catégories
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <a class="dropdown-item" href="index.php?p=admin.categories">Listes des catégories</a>
+                            <a class="dropdown-item" href="index.php?p=admin.categories.index">Listes des catégories</a>
                             <a class="dropdown-item" href="index.php?p=admin.categories.create">Ajouter une catégories</a>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item"><a href="index.php?p=public.login" class="nav-link">Se connecter</a></li>
+                <li class="nav-item"><a href="index.php?p=login" class="nav-link">Se connecter</a></li>
             </ul>
         </div>
     </nav>

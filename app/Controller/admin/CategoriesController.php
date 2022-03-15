@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use \App;
 
-class CategoryController extends AppController
+class CategoriesController extends AppController
 {
 
     public function __construct()

@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use \App;
 
-class UserController extends AppController
+class UsersController extends AppController
 {
 
     public function  __construct()
@@ -18,20 +18,6 @@ class UserController extends AppController
         $user = $this->User->find($_GET['id']);
         $data = compact('user');
         $this->render('admin.users.dashboard', $data);
-    }
-
-    public function login(){
-        $noAuth = false;
-        if(!empty($_POST)){
-            $auth = new \Core\Auth\DBAuth(App::getInstance()->getDatabase());
-            if($auth->login($_POST['email'], $_POST['password'])){
-                header("Location: index.php?p=admin.posts");
-            } else {
-                $noAuth = true;
-            }
-        }
-        $data = compact('noAuth');
-        $this->render('public.login', $data);
     }
 
     public function index()

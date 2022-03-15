@@ -21,9 +21,13 @@ class DBAuth {
         return false;
     }
 
-    public function login($email, $password) :bool
+    /**
+    * @param $email
+    * @param $password
+     * @return boolean
+     */
+    public function login($email, $password)
     {
-
         $user = $this->db->prepare(
             "
             SELECT * from users
@@ -41,7 +45,6 @@ class DBAuth {
             }
         }
         return false;
-
     }
 
     public function logged(){

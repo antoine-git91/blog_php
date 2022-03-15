@@ -9,7 +9,7 @@ $categories = App::getInstance()->getTable('Category')->all();
             <?php foreach ($categories as $categorie): ?>
                 <?php
                     $active = "";
-                    if(isset($_GET['p']) == "posts.category"){
+                    if(isset($_GET['p']) == "posts.categories" && $_GET['id']){
                         if($categorie->id === $_GET['id']){
                             $active = "active";
                         }

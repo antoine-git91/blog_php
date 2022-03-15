@@ -10,12 +10,7 @@ class PostEntity extends Entity {
 
     public function getUrl()
     {
-        return "index.php?p=post.single&id=" . $this->id;
-    }
-
-    public function getUrlDelete()
-    {
-        return "index.php?p=delete_post&id=" . $this->id;
+        return "index.php?p=posts.single&id=" . $this->id;
     }
 
     public function getExcerpt()
